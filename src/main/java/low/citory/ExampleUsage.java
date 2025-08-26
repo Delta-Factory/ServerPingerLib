@@ -7,8 +7,8 @@ public final class ExampleUsage {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ExampleUsage.class);
 
-	private static final String testIP = "mc.hypixel.net";
-	private static final int testPORT = 25565;
+	private static final String testIP = "saturn.minecraft-hosting.net";
+	private static final int testPORT = 25398;
 
 	public static void main(String[] args) {
 		String serverIP;
