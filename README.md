@@ -14,12 +14,8 @@
 
 <p align="center" style="font-size: 15px">
     <b>
-		delta.cion - main (scanner)
-		<br>
-    	low.citory - pinger packages
-		<br>
-		taumel.io - files packages
-    </b>
+		It`s library for server scanners on Java!
+	</b>
 </p>
 
 <H3 align="center">-==[ Pinger (lib inside) example usage]==-</H3>
@@ -37,6 +33,7 @@ private static final int serverPORT = 25398;
 public static void main(String[] args) {
 	MinecraftPinger server = new MinecraftPinger(serverIP, serverPORT);
 	if (!server.isOnline()) LOGGER.info("Server {}:{} is offline", serverIP, serverPORT);
+	if (!server.isOnline()) return;
 	else {
 		LOGGER.info("Server protocol: {}", server.getProtocolVersion());
 		LOGGER.info("Server version: {}", server.getVersion());
@@ -47,7 +44,8 @@ public static void main(String[] args) {
 
 	ConnectChecker connectChecker = new ConnectChecker(server.getProtocolVersion());
 	connectChecker.setHost(serverIP, serverPORT);
-	if (connectChecker.connect()) LOGGER.info("Disconnect reason: {}", connectChecker.getDisconnectReason());
+	if (connectChecker.connect())
+		LOGGER.info("Disconnect reason: {}", connectChecker.getDisconnectReason());
 }
 ```
 

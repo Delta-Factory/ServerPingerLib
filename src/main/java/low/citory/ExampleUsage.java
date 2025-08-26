@@ -13,6 +13,7 @@ public class ExampleUsage {
 	public static void main(String[] args) {
 		MinecraftPinger server = new MinecraftPinger(serverIP, serverPORT);
 		if (!server.isOnline()) LOGGER.info("Server {}:{} is offline", serverIP, serverPORT);
+		if (!server.isOnline()) return;
 		else {
 			LOGGER.info("Server protocol: {}", server.getProtocolVersion());
 			LOGGER.info("Server version: {}", server.getVersion());
@@ -23,6 +24,7 @@ public class ExampleUsage {
 
 		ConnectChecker connectChecker = new ConnectChecker(server.getProtocolVersion());
 		connectChecker.setHost(serverIP, serverPORT);
-		if (connectChecker.connect()) LOGGER.info("Disconnect reason: {}", connectChecker.getDisconnectReason());
+		if (connectChecker.connect())
+			LOGGER.info("Disconnect reason: {}", connectChecker.getDisconnectReason());
 	}
 }
