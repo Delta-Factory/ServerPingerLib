@@ -1,6 +1,6 @@
 <img src="https://raw.githubusercontent.com/Delta-Factory/.github/refs/heads/main/profile/img/Project_Void.png" alt="Project~Void background">
 
-<H1 align="center">-== LowCitory ==-</H1>
+<H1 align="center">-== MinecraftServerPingerLib ==-</H1>
 
 <p align="center" style="font-size: 15px">
     <b>
