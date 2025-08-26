@@ -3,7 +3,7 @@ package low.citory;
 import low.citory.versions.LegacyPing;
 import low.citory.versions.ModernPing;
 
-public class MinecraftPinger {
+public final class MinecraftPinger {
 
 	private boolean serverStatus;
 	private String serverVersion;
@@ -68,38 +68,75 @@ public class MinecraftPinger {
 	}
 
 	// Getters
+
+	/**
+	 * Get server online status
+	 * @return boolean
+	 */
 	public boolean isOnline() {
 		return this.serverStatus;
 	}
 
+	/**
+	 * Get server version
+	 * @return string
+	 */
 	public String getVersion() {
 		return this.serverVersion;
 	}
 
+	/**
+	 * Get protocol version
+	 * @return int
+	 */
 	public int getProtocolVersion() {
 		return this.protocolVersion;
 	}
 
+	/**
+	 * Get server motd
+	 * @return string
+	 */
 	public String getMotd() {
 		return this.serverMOTD;
 	}
 
+	/**
+	 * Get stripped motd
+	 * @return string
+	 */
 	public String getStrippedMotd() {
 		return this.strippedMOTD;
 	}
 
+	/**
+	 * Get motd with console formating
+	 * @return string
+	 */
 	public String getAnsiMotd() {
 		return this.ansiMOTD;
 	}
 
+	/**
+	 * Get current players count
+	 * @return int
+	 */
 	public int getPlayersOnline() {
 		return this.playersOnline;
 	}
 
+	/**
+	 * Get max players count
+	 * @return int
+	 */
 	public int getMaxPlayers() {
 		return maxPlayers;
 	}
 
+	/**
+	 * Get server ping
+	 * @return long
+	 */
 	public long getServerPing() {
 		return this.serverPing;
 	}

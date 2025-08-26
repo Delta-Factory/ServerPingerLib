@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class PacketUtil {
+public final class PacketUtil {
 
 	// Writers
 	public static void writeVarInt(DataOutputStream outputStream, int value) throws IOException {

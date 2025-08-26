@@ -4,7 +4,7 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TextColorizer {
+public final class TextColorizer {
 
 	private static final Pattern PATTERN = Pattern.compile("§([0-9a-fk-or])", Pattern.CASE_INSENSITIVE);
 

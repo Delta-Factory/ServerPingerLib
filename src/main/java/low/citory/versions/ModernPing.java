@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.List;
 
-public class ModernPing extends AbstractPinger {
+public final class ModernPing extends AbstractPinger {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ModernPing.class);
 

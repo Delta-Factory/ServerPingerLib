@@ -23,24 +23,47 @@ public class ConnectChecker {
 
 	private String disconnectReason;
 
+	/**
+	 * Create basic ConnectChecker
+	 * @param protocol int
+	 */
 	public ConnectChecker(int protocol) {
 		this.protocol = protocol;
 	}
 
+	/**
+	 * Create basic ConnectChecker with custom player name
+	 * @param protocol int
+	 * @param playerName string
+	 */
 	public ConnectChecker(int protocol, String playerName) {
 		this.protocol = protocol;
 		this.playerName = playerName;
 	}
 
+	/**
+	 * Set server host (mc.example.com:25565)
+	 * @param host string
+	 * @param port int
+	 */
 	public void setHost(String host, int port) {
 		this.serverIP = host;
 		this.serverPORT = port;
 	}
 
+	/**
+	 * Get disconnection reason (if null - it`s good)
+	 * @return string
+	 */
 	public String getDisconnectReason() {
 		return this.disconnectReason;
 	}
 
+	/**
+	 * U need to read it?..
+	 * If success - return true
+	 * @return boolean
+	 */
 	public boolean connect() {
 		try (Socket socket = new Socket()) {
 			socket.connect(new InetSocketAddress(serverIP, serverPORT), 5000);

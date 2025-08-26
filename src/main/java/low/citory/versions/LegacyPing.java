@@ -11,7 +11,7 @@ import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
-public class LegacyPing extends AbstractPinger {
+public final class LegacyPing extends AbstractPinger {
 	public static boolean pingServer(MinecraftPinger pinger, String serverIP, int serverPORT) {
 		try (Socket socket = new Socket()) {
 			List<Object> dat = PacketUtil.getDatIO(socket, serverIP, serverPORT);

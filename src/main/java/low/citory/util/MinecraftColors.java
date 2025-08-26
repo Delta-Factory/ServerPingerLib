@@ -1,6 +1,6 @@
 package low.citory.util;
 
-public enum MinecraftColors {
+enum MinecraftColors {
 	V_0("\u001B[30m"), // BLACK
 	V_1("\u001B[34m"), // DARK BLUE
 	V_2("\u001B[32m"), // DARK GREEN
