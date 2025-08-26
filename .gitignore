@@ -1,0 +1,13 @@
+# ==================== #
+# By: Lmao stupid Cion #
+# ==================== #
+
+# <= Main => #
+.idea
+.gradle
+.lowcache
+build
+gradle
+gradlew
+gradlew.bat
+.gitattributes
