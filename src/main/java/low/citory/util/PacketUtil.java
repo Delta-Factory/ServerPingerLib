@@ -61,6 +61,7 @@ public final class PacketUtil {
 	public static List<Object> getDatIO(Socket socket, String serverIP, int serverPORT) throws IOException {
 		long currentTime = System.currentTimeMillis();
 		socket.connect(new InetSocketAddress(serverIP, serverPORT), 5000);
+		socket.setSoTimeout(5000);
 		long ping = System.currentTimeMillis() - currentTime;
 
 		DataInputStream inputStream = new DataInputStream(socket.getInputStream());
