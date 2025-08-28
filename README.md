@@ -27,8 +27,8 @@
 ```java
 private static final Logger LOGGER = LoggerFactory.getLogger(ExampleUsage.class);
 
-private static final String testIP = "saturn.minecraft-hosting.net";
-private static final int testPORT = 25398;
+private static final String testIP = "mc.example.com";
+private static final int testPORT = 25565;
 
 public static void main(String[] args) {
 	String serverIP;
