@@ -9,6 +9,16 @@ public final class TextColorizer {
 	private static final Pattern PATTERN = Pattern.compile("§([0-9a-fk-or])", Pattern.CASE_INSENSITIVE);
 
 	public static String convertToAnsi(String string) {
+		if (string == null) return null;
+		return ansiConverter(string);
+	}
+
+	public static String stripFormatting(String string) {
+		if (string == null) return null;
+		return string.replaceAll("§[0-9a-fk-or]", "");
+	}
+
+	private static String ansiConverter(String string) {
 		Matcher matcher = PATTERN.matcher(string+"§r");
 		StringBuilder finallyString = new StringBuilder();
 
@@ -22,9 +32,5 @@ public final class TextColorizer {
 		}
 		matcher.appendTail(finallyString);
 		return finallyString.toString();
-	}
-
-	public static String stripFormatting(String text) {
-		return text.replaceAll("§[0-9a-fk-or]", "");
 	}
 }

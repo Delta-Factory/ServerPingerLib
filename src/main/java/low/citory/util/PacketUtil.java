@@ -15,8 +15,11 @@ public final class PacketUtil {
 	// Writers
 	public static void writeVarInt(DataOutputStream outputStream, int value) throws IOException {
 		while (true) {
-			if ((value & 0xFFFFFF80) == 0) outputStream.writeByte(value);
-			if ((value & 0xFFFFFF80) == 0) return;
+			if ((value & 0xFFFFFF80) == 0) {
+				outputStream.writeByte(value);
+				return;
+			}
+
 
 			outputStream.writeByte(value & 0x7F | 0x80);
 			value >>>= 7;

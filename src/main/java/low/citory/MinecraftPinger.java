@@ -27,7 +27,7 @@ public final class MinecraftPinger {
 	private void getServerData() {
 		if (ModernPing.pingServer(this, serverIP, serverPORT)) return;
 		if (LegacyPing.pingServer(this, serverIP, serverPORT)) return;
-		else this.serverStatus = false;
+		this.serverStatus = false;
 	}
 
 	// Setters

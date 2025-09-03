@@ -32,7 +32,7 @@ public final class ModernPing extends AbstractPinger {
 			DataOutputStream handshake = new DataOutputStream(rawHandshake);
 
 			handshake.writeByte(0x00);
-			PacketUtil.writeVarInt(handshake, -1);
+			PacketUtil.writeVarInt(handshake, 765);
 			PacketUtil.writeString(handshake, serverIP);
 			handshake.writeShort(serverPORT);
 			PacketUtil.writeVarInt(handshake, 1);
@@ -40,8 +40,16 @@ public final class ModernPing extends AbstractPinger {
 			PacketUtil.writeVarInt(outputStream, rawHandshake.size());
 			outputStream.write(rawHandshake.toByteArray());
 
-			PacketUtil.writeVarInt(outputStream, 1);
-			PacketUtil.writeVarInt(outputStream, 0);
+			ByteArrayOutputStream statusReq = new ByteArrayOutputStream();
+			DataOutputStream tmp = new DataOutputStream(statusReq);
+			PacketUtil.writeVarInt(tmp, 0x00);
+			byte[] reqBytes = statusReq.toByteArray();
+
+			PacketUtil.writeVarInt(outputStream, reqBytes.length);
+			outputStream.write(reqBytes);
+			outputStream.flush();
+
+			PacketUtil.readVarInt(inputStream);
 			outputStream.flush();
 
 			int packetId = PacketUtil.readVarInt(inputStream);
@@ -65,7 +73,6 @@ public final class ModernPing extends AbstractPinger {
 			JsonObject versionData = json.getAsJsonObject("version");
 			String version = versionData.get("name").getAsString();
 			int protocol = versionData.get("protocol").getAsInt();
-
 
 			JsonObject playersData = json.getAsJsonObject("players");
 			int playersOnline = playersData.get("online").getAsInt();
