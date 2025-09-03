@@ -59,6 +59,16 @@ public static void main(String[] args) {
 }
 ```
 
+<H3 align="center">-==[ Thanks ]==-</H3>
+
+<p align="center" style="font-size: 15px">
+    <b>
+		<a href="https://github.com/ShulkerSakura">ShulkerSakura</a> - Main contributor
+		<br> He helped me with fix ModernPing and MOTD formatting
+		<br> and give me some ideas
+	</b>
+</p>
+
 ---
 <H1 align="center">Socials</H1>
 
