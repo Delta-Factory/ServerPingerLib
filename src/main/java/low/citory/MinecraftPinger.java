@@ -8,8 +8,7 @@ public final class MinecraftPinger {
 	private boolean serverStatus;
 	private String serverVersion;
 	private int protocolVersion;
-	private String serverMOTD;
-	private String strippedMOTD;
+	private String rawMOTD;
 	private String ansiMOTD;
 	private int playersOnline;
 	private int maxPlayers;
@@ -44,11 +43,7 @@ public final class MinecraftPinger {
 	}
 
 	public void setRawMotd(String rawMotd) {
-		this.serverMOTD = rawMotd;
-	}
-
-	public void setStrippedMotd(String strippedMotd) {
-		this.strippedMOTD = strippedMotd;
+		this.rawMOTD = rawMotd;
 	}
 
 	public void setAnsiMotd(String ansiMotd) {
@@ -97,16 +92,8 @@ public final class MinecraftPinger {
 	 * Get server motd
 	 * @return string
 	 */
-	public String getMotd() {
-		return this.serverMOTD;
-	}
-
-	/**
-	 * Get stripped motd
-	 * @return string
-	 */
-	public String getStrippedMotd() {
-		return this.strippedMOTD;
+	public String getRawMotd() {
+		return this.rawMOTD;
 	}
 
 	/**

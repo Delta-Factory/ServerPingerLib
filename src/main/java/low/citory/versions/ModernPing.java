@@ -32,7 +32,7 @@ public final class ModernPing extends AbstractPinger {
 			DataOutputStream handshake = new DataOutputStream(rawHandshake);
 
 			handshake.writeByte(0x00);
-			PacketUtil.writeVarInt(handshake, -1);
+			PacketUtil.writeVarInt(handshake, 765);
 			PacketUtil.writeString(handshake, serverIP);
 			handshake.writeShort(serverPORT);
 			PacketUtil.writeVarInt(handshake, 1);
@@ -40,10 +40,18 @@ public final class ModernPing extends AbstractPinger {
 			PacketUtil.writeVarInt(outputStream, rawHandshake.size());
 			outputStream.write(rawHandshake.toByteArray());
 
-			PacketUtil.writeVarInt(outputStream, 1);
-			PacketUtil.writeVarInt(outputStream, 0);
+			ByteArrayOutputStream statusReq = new ByteArrayOutputStream();
+			DataOutputStream tmp = new DataOutputStream(statusReq);
+			PacketUtil.writeVarInt(tmp, 0x00);  // Status Request packet ID
+			byte[] reqBytes = statusReq.toByteArray();
+
+			PacketUtil.writeVarInt(outputStream, reqBytes.length);
+			outputStream.write(reqBytes);
 			outputStream.flush();
 
+			// Step 1: 读取整个包的长度（VarInt）
+			int packetLength = PacketUtil.readVarInt(inputStream);
+			// Step 2: 读取 Packet ID
 			int packetId = PacketUtil.readVarInt(inputStream);
 			if (packetId != 0x00) return false;
 
@@ -61,6 +69,7 @@ public final class ModernPing extends AbstractPinger {
 		try {
 			Gson gson = new Gson();
 			JsonObject json = gson.fromJson(data, JsonObject.class);
+			//System.out.println(json.toString());
 
 			JsonObject versionData = json.getAsJsonObject("version");
 			String version = versionData.get("name").getAsString();
