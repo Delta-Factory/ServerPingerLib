@@ -38,7 +38,7 @@ public final class LegacyPing extends AbstractPinger {
 			int playersOnline = Integer.parseInt(fields[4]);
 			int maxPlayers = Integer.parseInt(fields[5]);
 
-			setServerData(pinger, serverVersion, 60, serverMOTD, playersOnline, maxPlayers, latency);
+			setServerData(pinger, serverVersion, -1, serverMOTD, playersOnline, maxPlayers, latency);
 			return true;
 		} catch (IOException e) {
 			return false;

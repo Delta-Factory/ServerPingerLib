@@ -15,8 +15,8 @@ public final class TextColorizer {
 		while (matcher.find()) {
 			char color = matcher.group(1).charAt(0);
 			String colorCode = "V_"+Character.toUpperCase(color);
-			String code = Optional.of(MinecraftColors.valueOf(colorCode)).
-				map(MinecraftColors::getAnsiCode).orElse("");
+			String code = Optional.of(MinecraftCodes.valueOf(colorCode)).
+				map(MinecraftCodes::getAnsiCode).orElse("");
 
 			matcher.appendReplacement(finallyString, Matcher.quoteReplacement(code));
 		}

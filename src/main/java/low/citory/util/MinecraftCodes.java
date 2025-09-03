@@ -1,6 +1,6 @@
 package low.citory.util;
 
-enum MinecraftColors {
+enum MinecraftCodes {
 	V_0("\u001B[30m"), // BLACK
 	V_1("\u001B[34m"), // DARK BLUE
 	V_2("\u001B[32m"), // DARK GREEN
@@ -17,11 +17,15 @@ enum MinecraftColors {
 	V_D("\u001B[95m"), // PURPLE
 	V_E("\u001B[93m"), // YELLOW
 	V_F("\u001B[97m"), // WHITE
+	V_L("\u001B[1m"),  // BOLD
+	V_O("\u001B[3m"),  // ITALIC
+	V_N("\u001B[4m"),  // UNDERLINE
+	V_M("\u001B[9m"),  // STRIKETHROUGH
 	V_R("\u001B[0m");  // RESET
 
 	private final String ansiCode;
 
-	MinecraftColors(String ansiCode) {
+	MinecraftCodes(String ansiCode) {
 		this.ansiCode = ansiCode;
 	}
 
