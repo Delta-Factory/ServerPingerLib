@@ -28,6 +28,7 @@ public final class ExampleUsage {
 			// Colors work only with "System.out.println()"
 			// Idk how to fix colors with log4j
 			LOGGER.info("Server MOTD: {}", server.getAnsiMotd());
+			LOGGER.info("Server Raw MOTD: {}", server.getRawMotd());
 			LOGGER.info("Players online: {}/{}", server.getPlayersOnline(), server.getMaxPlayers());
 			LOGGER.info("Server ping: {}ms", server.getServerPing());
 		}

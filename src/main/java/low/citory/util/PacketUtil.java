@@ -13,12 +13,14 @@ import java.util.UUID;
 public final class PacketUtil {
 
 	// Writers
-	public static void writeVarInt(DataOutputStream outputStream, int value) throws IOException {
+	public static void writeVarInt(DataOutputStream out, int value) throws IOException {
 		while (true) {
-			if ((value & 0xFFFFFF80) == 0) outputStream.writeByte(value);
-			if ((value & 0xFFFFFF80) == 0) return;
+			if ((value & 0xFFFFFF80) == 0) {
+				out.writeByte(value);
+				return;  // 👈 必须 return！
+			}
 
-			outputStream.writeByte(value & 0x7F | 0x80);
+			out.writeByte((value & 0x7F) | 0x80);
 			value >>>= 7;
 		}
 	}

@@ -1,30 +1,31 @@
 package low.citory.util;
 
-import java.util.Optional;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public final class TextColorizer {
 
-	private static final Pattern PATTERN = Pattern.compile("§([0-9a-fk-or])", Pattern.CASE_INSENSITIVE);
+	private static final String COLOR_CODE_PATTERN = "§[0-9a-fk-or]";
 
-	public static String convertToAnsi(String string) {
-		Matcher matcher = PATTERN.matcher(string+"§r");
-		StringBuilder finallyString = new StringBuilder();
-
-		while (matcher.find()) {
-			char color = matcher.group(1).charAt(0);
-			String colorCode = "V_"+Character.toUpperCase(color);
-			String code = Optional.of(MinecraftColors.valueOf(colorCode)).
-				map(MinecraftColors::getAnsiCode).orElse("");
-
-			matcher.appendReplacement(finallyString, Matcher.quoteReplacement(code));
-		}
-		matcher.appendTail(finallyString);
-		return finallyString.toString();
+	/**
+	 * 移除所有 Minecraft 颜色和格式代码 (§r, §a, §l 等)
+	 */
+	public static String stripFormatting(String text) {
+		return stripColorCodes(text);
 	}
 
-	public static String stripFormatting(String text) {
-		return text.replaceAll("§[0-9a-fk-or]", "");
+	/**
+	 * 移除所有 Minecraft 颜色和格式代码
+	 * 此方法可在类内部或外部调用
+	 */
+	public static String stripColorCodes(String text) {
+		if (text == null) return null;
+		return text.replaceAll(COLOR_CODE_PATTERN, "");
+	}
+
+	/**
+	 * 将 Minecraft 的 § 颜色代码转换为 ANSI 转义序列，用于终端着色
+	 * 使用 MinecraftANSI 工具类
+	 */
+	public static String convertToAnsi(String string) {
+		if (string == null) return null;
+		return MinecraftANSI.toAnsi(string);
 	}
 }
